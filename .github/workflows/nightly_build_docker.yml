@@ -57,17 +57,13 @@ jobs:
             "PKG_OPTIONS=${{ matrix.pkg_options }}"
       - name: Extract image
         run: |
-          docker push ${{ env.REGISTRY }}/congatudo/congatudo-nightly:${{ matrix.image_name }}-latest
+          docker save ${{ env.REGISTRY }}/congatudo/congatudo-nightly:${{ matrix.image_name }}-latest > ${{ env.REGISTRY }}/congatudo/congatudo-nightly:${{ matrix.image_name }}-latest.tar
       - name: Move cache
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-  {
-                'name': 'Upload armv7 build',
-                'uses': 'actions/upload-artifact@v4',
-                'with':
-                  {
-                    'name': 'valetudo-armv7',
-                    'path': './build/armv7/valetudo',
-                  },
-              }
+      - name: Upload arm64 build
+        uses: actions/upload-artifact@v4
+        with:
+          name: valetudo-arm64
+          path: ./build/valetudo
