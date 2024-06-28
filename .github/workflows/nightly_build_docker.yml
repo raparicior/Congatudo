@@ -57,7 +57,7 @@ jobs:
             "PKG_OPTIONS=${{ matrix.pkg_options }}"
       - name: Extract image
         run: |
-          docker save ${{ env.REGISTRY }}/congatudo/congatudo-nightly:${{ matrix.image_name }}-latest > ${{ env.REGISTRY }}/congatudo/congatudo-nightly:${{ matrix.image_name }}-latest.tar
+          docker save ${{ env.REGISTRY }}/congatudo/congatudo-nightly:${{ matrix.image_name }}-latest > ${{ matrix.image_name }}-latest.tar
       - name: Move cache
         run: |
           rm -rf /tmp/.buildx-cache
