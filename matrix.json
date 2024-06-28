@@ -9,7 +9,7 @@
     {
       "build_from": "arm64v8/alpine:3.18",
       "image_name": "alpine-aarch64",
-      "pkg_options": "expose-gc,max-heap-size=64",
+      "pkg_options": "expose-gc,max-heap-size=128",
       "pkg_target": "node20-linuxstatic-arm64"
     },
     {
